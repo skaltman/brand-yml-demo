@@ -1,0 +1,86 @@
+---
+format:
+  html:
+    toc: true
+execute:
+  echo: false
+---
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+from mplstyle import mplstyle_from_brand
+
+# Load data
+subscriptions = pd.read_csv("data/subscriptions.csv")
+subscriptions["date"] = pd.to_datetime(subscriptions["date"])  
+
+# Apply branding to plots
+with open("_brand.yml") as brand_file:
+    mplstyle_from_brand(brand_file)
+```
+
+## Subscriptions overview
+
+```{python}
+current_date = subscriptions['date'].max()
+current_subscriptions = subscriptions[subscriptions['date'] == current_date]
+total_current_subscriptions = current_subscriptions['active_subscriptions'].sum()
+most_popular_type = subscriptions.groupby("subscription_type")["active_subscriptions"].sum().idxmax()
+months_tracked = subscriptions['date'].nunique()
+```
+
+As of November 2024, there are a __total of `{python} str(total_current_subscriptions)` active subscriptions__, with the __`{python} most_popular_type` subscription type as the most popular__ subscription type. The data spans `{python} months_tracked` months, __beginning in January 2020__.
+
+## Subscription Trends by Type
+
+```{python}
+filtered_data = (
+    subscriptions if "All" == "All"
+    else subscriptions[subscriptions["subscription_type"] == "All"]
+)
+
+start_date = "2020-01-01"
+end_date = "2024-11-01"
+
+filtered_data = filtered_data[
+    (filtered_data["date"] >= pd.to_datetime(start_date)) &
+    (filtered_data["date"] <= pd.to_datetime(end_date))
+]
+
+fig, ax = plt.subplots(figsize=(10, 6))
+for sub_type, group in filtered_data.groupby("subscription_type"):
+    ax.plot(group["date"], group["active_subscriptions"], label=sub_type)
+
+ax.set_xlabel("Date")
+ax.set_ylabel("Subscription Count")
+ax.legend(title="Subscription Type")
+ax.grid(True, linestyle="--", alpha=0.6)
+```
+
+## Current Subscriptions by Type
+
+```{python}
+subscriptions["year"] = subscriptions["date"].dt.year
+start_of_year = subscriptions.groupby(["year", "subscription_type"])["active_subscriptions"].first()
+end_of_year = subscriptions.groupby(["year", "subscription_type"])["active_subscriptions"].last()
+
+net_change = end_of_year - start_of_year
+
+fig, ax = plt.subplots(figsize=(10, 6))
+net_change.unstack().plot(kind="bar", ax=ax)
+ax.axhline(0, color="black", linewidth=0.8)
+ax.set_ylabel("Net Change in Subscriptions")
+ax.legend(title="Subscription Type")
+plt.tight_layout()
+```
+
+## About This Report
+
+This report is styled using `_brand.yml` for consistent branding across Quarto reports and Shiny apps.
+
+Learn more:
+
+* `_brand.yml` documentation: [https://posit-dev.github.io/brand-yml/](https://posit-dev.github.io/brand-yml/)
+* Shinylive example with `_brand.yml`: [https://shinylive.io/py/examples/#branded-theming](https://shinylive.io/py/examples/#branded-theming)
+* Shiny for Python: [https://shiny.posit.co/py/](https://shiny.posit.co/py/)
