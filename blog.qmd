@@ -25,7 +25,7 @@ Enter [**brand.yml**](https://posit-dev.github.io/brand-yml/). We created **bran
 
 ### Advantages of **brand.yml**
 
-**brand.yml** allows you to collect a brand's logos, colors, fonts, and typographic choices into a single `_brand.yml` file, which you can then apply instantly across Quarto reports and Shiny apps. 
+**brand.yml** allows you to collect a brand's logos, colors, fonts, and typographic choices into a single `_brand.yml` file, which you can then apply instantly across Quarto reports, Shiny apps, and more.
 
 Here are some advantages of this strategy:
 
