@@ -39,7 +39,7 @@ Here are some advantages of this strategy:
 
 Let's see how **brand.yml** works. The first step is to define your brand elements, including logos, colors, fonts, and typography, in a single `_brand.yml` file. 
 
-Below is an example `_brand.yml` file that defines a logo, color palette, and font and typographic choices for an example brand. Learn more about the structure of a `_brand.yml` file [here](https://posit-dev.github.io/brand-yml/brand/).
+Below is an example `_brand.yml` file that defines metadata, logos, a color palette, and font and typographic choices for an example brand. Learn more about the structure of a `_brand.yml` file [here](https://posit-dev.github.io/brand-yml/brand/).
 
 
 ```yaml
@@ -47,7 +47,7 @@ meta:
   name: Example Company
   link: 
     github: https://github.com/skaltman/brand-yml-blog
-    
+
 logo: 
   medium: logos/logo.png
 
