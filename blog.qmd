@@ -27,11 +27,11 @@ Enter [**brand.yml**](https://posit-dev.github.io/brand-yml/). We created **bran
 
 Here are some advantages of this strategy:
 
-* **Consistency without effort** Ensure all your work consistently follows brand guidelines and avoid duplication by defining branding in one file that can be applied across projects.
+* **Consistency without effort**: Ensure all your work consistently follows brand guidelines and avoid duplication by defining branding in one file that can be applied across projects.
 
-* **Easy collaboration** Share a single `_brand.yml` file across your organization to ensure everyone can easily apply the same branding, eliminating the need for contributors to recreate brand-specific designs for every project.
+* **Easy collaboration**: Share a single `_brand.yml` file across your organization to ensure everyone can easily apply the same branding, eliminating the need for contributors to recreate brand-specific designs for every project.
 
-* **Not just for corporate branding** You can also use **brand.yml** to create custom themes for your personal or team-specific projects. Create a `_brand.yml` file for a specific journal or conference to ensure your work matches their style. 
+* **Not just for corporate branding**: You can also use **brand.yml** to create custom themes for your personal or team-specific projects. Create a `_brand.yml` file to match a specific journal or conference style.
 
 ## See **brand.yml** in action
 
@@ -177,4 +177,4 @@ For now, look forward to:
 
 ## Conclusion
 
-**brand.yml** enables unified branding for your dashboards, reports, and apps with a single file. Define your brand once and apply it seamlessly across projects—avoiding numerous manual updates and inconsistencies. Learn more and get started at https://posit-dev.github.io/brand-yml/. 
+**brand.yml** enables unified branding for your dashboards, reports, and apps with a single file. Define your brand once and apply it seamlessly across projects, avoiding numerous manual updates and inconsistencies. Learn more and get started at https://posit-dev.github.io/brand-yml/. 
