@@ -1,8 +1,6 @@
 ---
 title: "Unified Branding Across Posit Tools with brand.yml"
 format: html
-brand: false
-navbar: false
 ---
 
 ## Why **brand.yml**?
@@ -179,4 +177,4 @@ For now, look forward to:
 
 ## Conclusion
 
-**brand.yml** enables unified branding for your dashboards, reports, and apps with a single file. Define your brand once and apply it seamlessly across projects-—avoiding numerous manual updates and inconsistencies. Learn more and get started at https://posit-dev.github.io/brand-yml/. 
+**brand.yml** enables unified branding for your dashboards, reports, and apps with a single file. Define your brand once and apply it seamlessly across projects—avoiding numerous manual updates and inconsistencies. Learn more and get started at https://posit-dev.github.io/brand-yml/. 
