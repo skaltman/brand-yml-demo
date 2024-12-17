@@ -16,8 +16,7 @@ subscriptions = pd.read_csv("data/subscriptions.csv")
 subscriptions["date"] = pd.to_datetime(subscriptions["date"])  
 
 # Apply branding to plots
-with open("_brand.yml") as brand_file:
-    mplstyle_from_brand(brand_file)
+mplstyle_from_brand("_brand.yml")
 ```
 
 ## Subscriptions overview

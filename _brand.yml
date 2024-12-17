@@ -1,15 +1,19 @@
+meta: 
+  name: Example Company
+  link: 
+    github: https://github.com/skaltman/brand-yml-blog
+
 logo: 
   medium: logos/logo.png
 
 color:
   palette:
-    blue: "#0C0A3E" 
-    violet: "#4D6CFA"
-    neutral: "#F9F7F1" 
     black: "#1C2826"
+    blue: "#0C0A3E" 
     gray: "#2A2E45"
+    neutral: "#F9F7F1" 
     red: "#BA274A"
-    
+    violet: "#4D6CFA"
   background: neutral
   foreground: black
   primary: blue
@@ -20,45 +24,18 @@ typography:
   fonts:
     - family: Nunito Sans
       source: google
-      weight: [400, 700]
-      style: [normal, italic]
     - family: Montserrat
       source: google
-      weight: [400, 700]
-      style: [normal, italic]
     - family: Fira Code
       source: google
-      weight: [400, 500, 600]
-      style: [normal]
 
-  base:
-    family: Nunito Sans
-    weight: 400
-    size: 16px
-    line-height: 1.5
-
+  base: Nunito Sans
   headings:
     family: Montserrat
     weight: 700
-    line-height: 1.2
     color: primary
-
-  monospace:
-    family: Fira Code
-    weight: 400
-    size: 14px
+  monospace: Fira Code
 
   link:
-    weight: 400
     color: info
     decoration: underline
-  
-defaults:
-  bootstrap:
-    defaults:
-      my-pink: "$brand-blue"
-  shiny:
-    theme:
-      preset: shiny
-      rules: |
-        .navbar-brand { color: $brand-blue }
