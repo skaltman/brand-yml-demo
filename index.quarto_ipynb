@@ -1,0 +1,154 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "execute:\n",
+        "  echo: false\n",
+        "---"
+      ],
+      "id": "e6ac7776"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "# from mplstyle import mplstyle_from_brand\n",
+        "\n",
+        "# Load data\n",
+        "subscriptions = pd.read_csv(\"data/subscriptions.csv\")\n",
+        "subscriptions[\"date\"] = pd.to_datetime(subscriptions[\"date\"])  \n",
+        "\n",
+        "# Apply branding to plots\n",
+        "# mplstyle_from_brand(\"_brand.yml\")"
+      ],
+      "id": "a8713c1d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Subscriptions overview\n"
+      ],
+      "id": "3bda56a1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "current_date = subscriptions['date'].max()\n",
+        "current_subscriptions = subscriptions[subscriptions['date'] == current_date]\n",
+        "total_current_subscriptions = current_subscriptions['active_subscriptions'].sum()\n",
+        "most_popular_type = subscriptions.groupby(\"subscription_type\")[\"active_subscriptions\"].sum().idxmax()\n",
+        "months_tracked = subscriptions['date'].nunique()"
+      ],
+      "id": "65df9adc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "As of November 2024, there are a __total of `{python} str(total_current_subscriptions)` active subscriptions__, with the __`{python} most_popular_type` subscription type as the most popular__ subscription type. The data spans `{python} months_tracked` months, __beginning in January 2020__.\n",
+        "\n",
+        "## Subscription Trends by Type\n"
+      ],
+      "id": "07d7807c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "filtered_data = (\n",
+        "    subscriptions if \"All\" == \"All\"\n",
+        "    else subscriptions[subscriptions[\"subscription_type\"] == \"All\"]\n",
+        ")\n",
+        "\n",
+        "start_date = \"2020-01-01\"\n",
+        "end_date = \"2024-11-01\"\n",
+        "\n",
+        "filtered_data = filtered_data[\n",
+        "    (filtered_data[\"date\"] >= pd.to_datetime(start_date)) &\n",
+        "    (filtered_data[\"date\"] <= pd.to_datetime(end_date))\n",
+        "]\n",
+        "\n",
+        "fig, ax = plt.subplots(figsize=(10, 6))\n",
+        "for sub_type, group in filtered_data.groupby(\"subscription_type\"):\n",
+        "    ax.plot(group[\"date\"], group[\"active_subscriptions\"], label=sub_type)\n",
+        "\n",
+        "ax.set_xlabel(\"Date\")\n",
+        "ax.set_ylabel(\"Subscription Count\")\n",
+        "ax.legend(title=\"Subscription Type\")\n",
+        "ax.grid(True, linestyle=\"--\", alpha=0.6)"
+      ],
+      "id": "382ce26f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Current Subscriptions by Type\n"
+      ],
+      "id": "2e7f0859"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "subscriptions[\"year\"] = subscriptions[\"date\"].dt.year\n",
+        "start_of_year = subscriptions.groupby([\"year\", \"subscription_type\"])[\"active_subscriptions\"].first()\n",
+        "end_of_year = subscriptions.groupby([\"year\", \"subscription_type\"])[\"active_subscriptions\"].last()\n",
+        "\n",
+        "net_change = end_of_year - start_of_year\n",
+        "\n",
+        "fig, ax = plt.subplots(figsize=(10, 6))\n",
+        "net_change.unstack().plot(kind=\"bar\", ax=ax)\n",
+        "ax.axhline(0, color=\"black\", linewidth=0.8)\n",
+        "ax.set_ylabel(\"Net Change in Subscriptions\")\n",
+        "ax.legend(title=\"Subscription Type\")\n",
+        "plt.tight_layout()"
+      ],
+      "id": "74031d54",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## About This Report\n",
+        "\n",
+        "This report is styled using `_brand.yml` for consistent branding across Quarto reports and Shiny apps.\n",
+        "\n",
+        "Learn more:\n",
+        "\n",
+        "* `_brand.yml` documentation: [https://posit-dev.github.io/brand-yml/](https://posit-dev.github.io/brand-yml/)\n",
+        "* Shinylive example with `_brand.yml`: [https://shinylive.io/py/examples/#branded-theming](https://shinylive.io/py/examples/#branded-theming)\n",
+        "* Shiny for Python: [https://shiny.posit.co/py/](https://shiny.posit.co/py/)"
+      ],
+      "id": "ecf0fb3e"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "learn-media-2024",
+      "language": "python",
+      "display_name": "learn-media-2024",
+      "path": "/Users/saraa/Library/Jupyter/kernels/learn-media-2024"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

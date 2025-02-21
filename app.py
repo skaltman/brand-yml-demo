@@ -1,15 +1,14 @@
 from shiny.express import input, render, ui
 import matplotlib.pyplot as plt
 import pandas as pd
-from mplstyle import mplstyle_from_brand
+# from mplstyle import mplstyle_from_brand
 
 subscriptions = pd.read_csv("data/subscriptions.csv")
 subscriptions["date"] = pd.to_datetime(subscriptions["date"])  
 
-mplstyle_from_brand(__file__)
+# mplstyle_from_brand(__file__)
 
 ui.page_opts(
-    theme=ui.Theme.from_brand(__file__), 
     title="Explore total subscriptions", 
     fillable=True
 )

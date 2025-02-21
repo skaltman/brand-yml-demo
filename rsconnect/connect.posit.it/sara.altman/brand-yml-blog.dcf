@@ -1,0 +1,13 @@
+name: brand-yml-blog
+title: brand-yml-blog
+username: sara.altman
+account: sara.altman
+server: connect.posit.it
+hostUrl: https://connect.posit.it/__api__
+appId: 13375
+bundleId: 643877
+url: https://connect.posit.it/brand-yml-blog/
+version: 1
+asMultiple: FALSE
+asStatic: TRUE
+ignoredFiles: index_files/figure-html/cell-4-output-1.png|index_files/figure-html/cell-5-output-1.png|index.html|logos/logo.png|search.json

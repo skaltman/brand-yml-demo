@@ -84,11 +84,11 @@ typography:
     decoration: underline
 ```
 
-Now, we can place our `_brand.yml` file in the directory of a Shiny app or Quarto document to apply the specified branding. Currently, `_brand.yml` can be used by [Quarto 1.6](https://quarto.org/docs/authoring/brand.html) and [Shiny for Python](https://shiny.posit.co/blog/posts/shiny-python-1.2-brand-yml/).
+Now, we can place our `_brand.yml` file in the directory of a Shiny app or Quarto document to apply the specified branding. Currently, **brand.yml** can be used by [Quarto 1.6](https://quarto.org/docs/authoring/brand.html) and [Shiny for Python](https://shiny.posit.co/blog/posts/shiny-python-1.2-brand-yml/).
 
 ### Quarto
 
-To apply branding to your Quarto document, place `_brand.yml` in the root directory of your Quarto project or in the same directory as your documents. Quarto will automatically use your `_brand.yml` file to theme the output.
+To apply branding to your Quarto document, place your `_brand.yml` file in the root directory of your Quarto project or in the same directory as your documents. Quarto will automatically use your `_brand.yml` file to theme the output.
 
 ::: {.callout-note}
 Currently, the `html`, `dashboard`, `revealjs` and `typst` formats support **brand.yml**.
