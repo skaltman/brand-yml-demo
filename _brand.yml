@@ -1,0 +1,41 @@
+meta: 
+  name: Example Company
+  link: 
+    github: https://github.com/skaltman/brand-yml-blog
+
+logo: 
+  medium: logos/logo.png
+
+color:
+  palette:
+    black: "#1C2826"
+    blue: "#0C0A3E" 
+    gray: "#2A2E45"
+    neutral: "#F9F7F1" 
+    red: "#BA274A"
+    violet: "#4D6CFA"
+  background: neutral
+  foreground: black
+  primary: blue
+  secondary: violet
+  info: red
+
+typography:
+  fonts:
+    - family: Nunito Sans
+      source: google
+    - family: Montserrat
+      source: google
+    - family: Fira Code
+      source: google
+
+  base: Nunito Sans
+  headings:
+    family: Montserrat
+    weight: 700
+    color: primary
+  monospace: Fira Code
+
+  link:
+    color: info
+    decoration: underline

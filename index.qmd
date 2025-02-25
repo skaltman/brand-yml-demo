@@ -9,14 +9,14 @@ execute:
 ```{python}
 import pandas as pd
 import matplotlib.pyplot as plt
-# from mplstyle import mplstyle_from_brand
+from mplstyle import mplstyle_from_brand
 
 # Load data
 subscriptions = pd.read_csv("data/subscriptions.csv")
 subscriptions["date"] = pd.to_datetime(subscriptions["date"])  
 
 # Apply branding to plots
-# mplstyle_from_brand("_brand.yml")
+mplstyle_from_brand("_brand.yml")
 ```
 
 ## Subscriptions overview
