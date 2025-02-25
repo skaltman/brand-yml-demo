@@ -8,7 +8,7 @@ library(thematic)
 
 # Read the data
 subscriptions <- 
-  readr::read_csv("data/subscriptions.csv") |>
+  readr::read_csv("../data/subscriptions.csv") |>
   mutate(date = as.Date(date))
 
 thematic::thematic_shiny()
